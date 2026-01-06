@@ -431,7 +431,7 @@
         .hobby-title-text { font-weight: 700; color: #507aa3; font-size: 1.1rem; margin-bottom: 8px; display: block; }
         .hobby-desc { color: #555; font-size: 0.95rem; line-height: 1.4; }
 
-        .contact-section { background: #ffffff; border-top: 4px solid #507aa3; color: #191919; text-align: center; padding: 60px 20px; margin-top: 50px; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); }
+        .contact-section { background-color: #507aa3; background: linear-gradient(180deg, #ffffff 0%, #507aa3 100%); border-top: 4px solid #507aa3; color: #191919; text-align: center; padding: 60px 20px; margin-top: 50px; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); }
         .contact-section h2 { color: #507aa3; }
         .contact-info { font-size: 1.2rem; line-height: 2; color: #191919; }
         .contact-info i { color: #507aa3; margin-right: 10px; }
@@ -863,12 +863,47 @@ SolidWorks.</li>
     </div>
 
     <div class="contact-section" id="kontakt">
-        <h2 style="color:#507aa3; margin-top:0;">Kontakt</h2>
+        <h2 style="color:#000000; margin-top:0;">Kontakt</h2>
         <div class="contact-info">
-            <div><i class="fas fa-envelope"></i> anas.salem93@gmail.com</div>
-            <div><i class="fas fa-phone"></i> +49 152 37323835</div>
+            
+            <div>
+                <a href="mailto:anas.salem93@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> anas.salem93@gmail.com
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.linkedin.com/in/anas-salem-9536278a/" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin" style="color: #507aa3; font-size: 1.2rem;"></i> 
+                    LinkedIn Profil aufrufen
+                </a>
+            </div>
+
+            <div>
+                <a href="tel:+4915237323835" class="contact-link">
+                    <i class="fas fa-phone"></i> +49 152 37323835
+                </a>
+            </div>
+
         </div>
     </div>
+
+    <style>
+        .contact-link {
+            text-decoration: none;
+            color: #191919;
+            transition: color 0.3s ease;
+            display: inline-flex; /* Hält Icon und Text schön in einer Linie */
+            align-items: center;
+            gap: 10px; /* Abstand zwischen Icon und Text */
+            margin-bottom: 10px; /* Abstand zwischen den Zeilen */
+        }
+
+        .contact-link:hover {
+            color: #0a66c2;
+            cursor: pointer;
+        }
+    </style>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
