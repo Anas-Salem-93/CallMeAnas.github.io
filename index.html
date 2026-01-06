@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebenslauf - Anas Salem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Grundlegendes Styling (LinkedIn Style) --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            background-color: #f3f2ef;
+            color: #191919;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666666;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: #ebf4fd;
+            color: #0a66c2;
+        }
+
+        /* --- HEADER BEREICH --- */
+        header {
+            background-color: #0a66c2;
+            background: linear-gradient(180deg, #0a66c2 0%, #004182 100%);
+            color: white;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 50px;
+            text-align: left;
+        }
+
+        .profile-image-container { flex-shrink: 0; }
+
+        .profile-image-placeholder {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #ffffff; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .header-info h1 { 
+            font-size: 3rem; 
+            margin: 0 0 5px 0; 
+            text-transform: none; 
+            letter-spacing: 0;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .header-info .subtitle { 
+            font-size: 1.3rem; 
+            color: #e6f0ff; 
+            margin: 0 0 15px 0; 
+            font-weight: 400; 
+        }
+        
+        .header-info .contact-mini {
+            color: #ffffff;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .header-info .contact-mini i { margin-right: 8px; color: #ffffff; }
+
+        /* --- ÜBER MICH --- */
+        .about-section {
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+        }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #f3f2ef;
+            font-weight: 400;
+        }
+
+        /* --- TITEL STYLING --- */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            font-size: 2rem;
+            color: #191919;
+            position: relative;
+            font-weight: 600;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 50px; height: 4px; 
+            background: #0a66c2; 
+            margin: 10px auto 0; border-radius: 2px;
+        }
+
+        /* --- TIMELINE STRUKTUR --- */
+        .timeline-section {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-sizing: border-box; 
+        }
+
+        .timeline-section::after { 
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: #cfcfcf; 
+            top: 0;
+            bottom: 0;
+            left: 100px;
+            z-index: 0;
+            border-radius: 2px;
+            transition: all 0.6s ease;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            padding-left: 140px;
+            margin-bottom: 40px;
+            transition: all 0.6s ease;
+            box-sizing: border-box; 
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            left: 95px;
+            top: 110px;
+            background-color: #0a66c2;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 0 4px #f3f2ef; 
+        }
+
+        .date-bubble {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #ffffff;
+            color: #0a66c2; 
+            border: 2px solid #0a66c2;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 2;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.6s ease;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .date-start { top: 0; }
+        .date-end { bottom: 0; background: #0a66c2; color: white; } 
+
+        .date-line { position: absolute; height: 2px; background: #cfcfcf; width: 30px; left: 70px; z-index: 0; }
+        .line-top { top: 35px; }
+        .line-bottom { bottom: 35px; transition: bottom 0.6s ease; }
+
+        /* --- FLIP CARD --- */
+        .flip-card {
+            background-color: transparent;
+            width: 500px; 
+            max-width: 100%; 
+            height: 220px;
+            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1), height 0.6s ease;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .flip-card.active { width: 100%; max-width: 800px; height: 600px; }
+        
+        .flip-card-inner { 
+            position: relative; width: 100%; height: 100%; text-align: left; 
+            transition: transform 0.6s; transform-style: preserve-3d; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        
+        .flip-card.active .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 8px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .flip-card-front { 
+            background-color: #ffffff; 
+            color: #191919; 
+            border: 1px solid #e0e0e0;
+            justify-content: center; 
+        }
+
+        .card-header-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background-color: #f3f2ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #666;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .logo-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+
+        .card-header-text h2 { margin: 0 0 5px 0; font-size: 1.4rem; color: #0a66c2; font-weight: 700; line-height: 1.2; }
+        .card-header-text .role { font-size: 1rem; color: #191919; font-weight: 500; display: block; }
+        .card-header-text .sub-info { font-size: 0.9rem; color: #666; margin-top: 5px; font-weight: 400; }
+
+        .flip-card-back { 
+            background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+            color: white; 
+            transform: rotateY(180deg); 
+            justify-content: flex-start; 
+            overflow-y: auto; 
+            overflow-x: hidden; 
+            scrollbar-width: none; 
+            padding: 30px;
+        }
+        .flip-card-back::-webkit-scrollbar { display: none; }
+        .click-hint { margin-top: auto; color: #666; font-size: 0.85rem; text-align: right; }
+        
+        .flip-card-back h2 { border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-bottom: 15px; }
+        .flip-card-back ul { padding-left: 20px; }
+        .flip-card-back li { margin-bottom: 8px; line-height: 1.4; }
+        .flip-card-back strong { color: #fff; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.5); }
+
+        /* BILD PLATZHALTER RÜCKSEITE */
+        .card-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(255,255,255,0.2);
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255,255,255,0.8);
+            font-size: 3rem;
+            overflow: hidden;
+        }
+        .card-image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- SKILLS & TOOLTIPS --- */
+        .skills-container { max-width: 800px; margin: 0 auto; padding: 25px; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); box-sizing: border-box; width: 95%;}
+        .skill-box { margin-bottom: 25px; }
+        .skill-title { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; color: #191919; }
+        .skill-bar { height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; }
+        .skill-fill { height: 100%; background: #0a66c2; border-radius: 5px; transition: width 1.5s ease-in-out; }
+
+        .skill-category-wrapper { max-width: 900px; margin: 0 auto 40px auto; }
+        .skill-category-title { 
+            text-align: left; 
+            color: #191919; 
+            font-size: 1.2rem; 
+            margin-left: 10px; 
+            margin-bottom: 15px; 
+            border-left: 5px solid #0a66c2; 
+            padding-left: 15px; 
+        }
+        
+        .tech-grid { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; }
+        
+        /* Tech Item mit Tooltip Funktion */
+        .tech-item { 
+            background: white; 
+            padding: 10px 18px; 
+            border-radius: 20px; 
+            border: 1px solid #0a66c2; 
+            color: #0a66c2; 
+            font-weight: 600; 
+            box-shadow: none; 
+            transition: all 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            position: relative; /* Wichtig für Tooltip */
+            cursor: pointer;
+        }
+        
+        .tech-item:hover { background-color: #ebf4fd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .tech-item i { color: #0a66c2; font-size: 1.1rem; }
+
+        /* Der Tooltip Text */
+        .tech-item::after {
+            content: attr(data-tooltip); /* Holt den Text aus dem HTML Attribut */
+            position: absolute;
+            bottom: 120%; /* Über dem Element */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            pointer-events: none;
+            font-size: 0.8rem;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Der kleine Pfeil am Tooltip */
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            bottom: 110%; /* Muss den Tooltip berühren */
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 100;
+        }
+
+        /* Hover Effekt: Tooltip anzeigen */
+        .tech-item:hover::after,
+        .tech-item:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- HOBBYS & ENGAGEMENT --- */
+        .hobbies-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; padding-bottom: 80px; }
+        .hobby-item { text-align: center; position: relative; width: 260px; margin-top: 40px; }
+        .hobby-icon { width: 90px; height: 90px; border-radius: 50%; background: #0a66c2; border: 4px solid #f3f2ef; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: flex; justify-content: center; align-items: center; font-size: 2.2rem; color: #ffffff; position: absolute; top: -45px; left: 50%; transform: translateX(-50%); z-index: 2; transition: transform 0.3s; }
+        .hobby-item:hover .hobby-icon { transform: translateX(-50%) scale(1.1); }
+        .hobby-text-box { background: white; border-radius: 10px; padding: 55px 20px 25px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 4px solid #0a66c2; height: 100%; box-sizing: border-box; }
+        .hobby-title-text { font-weight: 700; color: #0a66c2; font-size: 1.1rem; margin-bottom: 8px; display: block; }
+        .hobby-desc { color: #555; font-size: 0.95rem; line-height: 1.4; }
+
+        .contact-section { background: #ffffff; border-top: 4px solid #0a66c2; color: #191919; text-align: center; padding: 60px 20px; margin-top: 50px; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); }
+        .contact-section h2 { color: #0a66c2; }
+        .contact-info { font-size: 1.2rem; line-height: 2; color: #191919; }
+        .contact-info i { color: #0a66c2; margin-right: 10px; }
+
+        @media screen and (max-width: 850px) {
+            .header-main { flex-direction: column; text-align: center; gap: 20px; }
+            .header-info h1 { font-size: 2.2rem; }
+            .profile-image-placeholder { width: 180px; height: 180px; margin: 0 auto; }
+            .timeline-section::after { left: 30px; }
+            .container { padding-left: 50px; padding-right: 10px; } 
+            .container::before { left: 24px; top: 110px; }
+            .date-bubble { width: 50px; height: 50px; font-size: 0.7rem; left: 5px; }
+            .date-start { top: -25px; }
+            .date-end { bottom: -25px; }
+            .date-line { display: none; }
+            .flip-card { width: 100%; height: 260px; }
+            .flip-card.active { width: 100%; max-width: 85vw; height: 600px; }
+            .logo-placeholder { width: 50px; height: 50px; font-size: 1rem; }
+            .card-header-row { gap: 15px; }
+            nav ul { gap: 10px; }
+            .tech-grid { justify-content: center; } 
+            .hobby-item { width: 100%; max-width: 300px; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <nav>
+        <ul>
+            <li><a href="#header">Über mich</a></li>
+            <li><a href="#beruf">Erfahrung</a></li>
+            <li><a href="#studium">Studium</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#hobbys">Interessen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <header id="header">
+        <div class="header-main">
+            <div class="profile-image-container">
+                <div class="profile-image-placeholder">
+                    <img src="profil.png" alt="Anas Salem">
+                </div>
+            </div>
+
+            <div class="header-info">
+                <h1>Anas Salem</h1>
+                <p class="subtitle">B.Sc. Medizintechnik</p>
+                <div class="contact-mini">
+                    <i class="fas fa-map-marker-alt"></i> Erlangen, Deutschland
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>Über mich</h2>
+            <p class="about-text">
+                Aktuell im Masterstudium der Medizintechnik an der FAU Erlangen-Nürnberg, vertiefe ich meine Kenntnisse in medizinischer Gerätetechnik und KI. Mit einem abgeschlossenen Bachelor und fundiertem Hintergrund im Produktionsingenieurwesen verbinde ich klassische Mechanik mit moderner Data Science.
+                <br><br>
+                Durch praktische Erfahrung bei Siemens Healthineers und Adidas habe ich gelernt, komplexe technische Systeme zu managen – sei es in der Wartungskoordination von Bildgebungssystemen oder bei der Validierung von Wearable-Sensoren mittels Computer Vision.
+            </p>
+        </div>
+    </header>
+
+    <h2 class="section-title" id="beruf">Berufserfahrung</h2>
+    <div class="timeline-section">
+        
+        <div class="container">
+            <div class="date-bubble date-start">Heute</div>
+            <div class="date-line line-top"></div>
+            <div class="date-bubble date-end">06/2024</div>
+            <div class="date-line line-bottom"></div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-header-row">
+                            <div class="logo-placeholder"><i class="fas fa-building"></i></div>
+                            <div class="card-header-text">
+                                <h2>Service Management</h2>
+                                <span class="role">Siemens Healthineers AG</span>
+                                <div class="sub-info">Werkstudent (process and tool management)</div>
+                            </div>
+                        </div>
+                        <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <h2>Tätigkeiten</h2>
+                        <ul>
+                            <li><strong>Ressourcenplanung:</strong> Koordination komplexer Wartungseinsätze für medizinische Großgeräte.</li>
+                            <li><strong>SAP & ERP:</strong> Digitalisierung von Wartungs- und Prüfprotokollen sowie Dokumentationspflege.</li>
+                            <li><strong>Schnittstellenmanagement:</strong> Bindeglied zwischen Kunden, Technikern und externen Dienstleistern.</li>
+                            <li><strong>Prozessoptimierung:</strong> Automatisierung von Workflows mittels MS Power Automate und Datenanalyse mit KNIME.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="date-bubble date-start">09/2020</div>
+            <div class="date-line line-top"></div>
+            <div class="date-bubble date-end">04/2019</div>
+            <div class="date-line line-bottom"></div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <div class="card-header-row">
+                            <div class="logo-placeholder"><i class="fas fa-shoe-prints"></i></div>
+                            <div class="card-header-text">
+                                <h2>Adidas-GMR Projekt</h2>
+                                <span class="role">Adidas AG</span>
+                                <div class="sub-info">Werkstudent (R&D & Computer Vision)</div>
+                            </div>
+                        </div>
+                        <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <h2>Produktentwicklung</h2>
+                        <ul>
+                            <li><strong>Wearable Tech:</strong> Entwicklung und Testing innovativer Sensortechnologien (Adidas GMR).</li>
+                            <li><strong>Computer Vision:</strong> Videoanalyse und Annotation zur Aufbereitung von Trainingsdaten für KI-Algorithmen.</li>
+                            <li><strong>Hardware-Validierung:</strong> Durchführung von Hardware-Tests und Sensordaten-Validierung im Sportbereich.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="date-bubble date-start">09/2015</div>
+            <div class="date-line line-top"></div>
+            <div class="date-bubble date-end">02/2012</div>
+            <div class="date-line line-bottom"></div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <div class="card-header-row">
+                            <div class="logo-placeholder"><i class="fas fa-drafting-compass"></i></div>
+                            <div class="card-header-text">
+                                <h2>Ingenieurassistent</h2>
+                                <span class="role">Aman Engineering Group</span>
+                                <div class="sub-info">Werkstudent (Konstruktion & CAD)</div>
+                            </div>
+                        </div>
+                        <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <h2>Konstruktion</h2>
+                        <ul>
+                            <li><strong>CAD Design:</strong> Erstellung normgerechter technischer Zeichnungen mit AutoCAD.</li>
+                            <li><strong>Projektleitung:</strong> Technische Unterstützung bei Bau- und Konstruktionsprojekten.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 class="section-title" id="studium">Studium</h2>
+    <div class="timeline-section">
+        
+        <div class="container">
+            <div class="date-bubble date-start">Heute</div>
+            <div class="date-line line-top"></div>
+            <div class="date-bubble date-end">04/2025</div>
+            <div class="date-line line-bottom"></div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-header-row">
+                            <div class="logo-placeholder"><i class="fas fa-university"></i></div>
+                            <div class="card-header-text">
+                                <h2>Medizintechnik M.Sc.</h2>
+                                <span class="role">FAU Erlangen-Nürnberg</span>
+                                <div class="sub-info">Aktuelles Studium</div>
+                            </div>
+                        </div>
+                        <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <h2>Studienschwerpunkte</h2>
+                        <ul>
+                            <li>Medizinische Gerätetechnik, Produktionstechnik und Prothetik.</li>
+                            <li>Vertiefung in KI und modernen Fertigungsverfahren.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="date-bubble date-start">04/2025</div>
+            <div class="date-line line-top"></div>
+            <div class="date-bubble date-end">10/2019</div>
+            <div class="date-line line-bottom"></div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-header-row">
+                            <div class="logo-placeholder"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="card-header-text">
+                                <h2>Medizintechnik B.Sc.</h2>
+                                <span class="role">FAU Erlangen-Nürnberg</span>
+                                <div class="sub-info">Abschluss: Bachelor of Science</div>
+                            </div>
+                        </div>
+                        <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <h2>Fachliche Schwerpunkte</h2>
+                        <ul>
+                            <li><strong>Informatik & KI:</strong> Python, Java, Deep Learning (CNN/RNN), Keras.</li>
+                            <li><strong>Ingenieurmechanik:</strong> FEM-Simulation, Statik, Dynamik, CAD-Modellierung.</li>
+                            <li><strong>Biomedizin:</strong> Biomechanik, Implantatwerkstoffe, Tissue Engineering.</li>
+                            <li><strong>Abschlussarbeit:</strong> Vorwärtsdynamische Simulationen der posturalen Kontrolle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="container">
+            <div class="date-bubble date-start">09/2015</div>
+            <div class="date-line line-top"></div>
+            <div class="date-bubble date-end">09/2012</div>
+            <div class="date-line line-bottom"></div>
+
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-header-row">
+                            <div class="logo-placeholder"><i class="fas fa-industry"></i></div>
+                            <div class="card-header-text">
+                                <h2>Produktions-<br>ingenieurwesen</h2>
+                                <span class="role">Aleppo Universität</span>
+                                <div class="sub-info">Diplomstudium</div>
+                            </div>
+                        </div>
+                        <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <h2>Studieninhalte</h2>
+                        <ul>
+                            <li>Fertigungstechnik und Werkstoffkunde.</li>
+                            <li>Technische Mechanik und Konstruktionslehre.</li>
+                            <li>Studium aufgrund des Bürgerkrieges unterbrochen.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 class="section-title" id="skills">Kenntnisse & Sprachen</h2>
+    
+    <div class="skill-category-wrapper">
+        <h3 class="skill-category-title">CAD & Design</h3>
+        <div class="tech-grid">
+            <div class="tech-item" data-tooltip="Uni"><i class="fas fa-drafting-compass"></i>Creo Parametric</div>
+            <div class="tech-item" data-tooltip="Uni & Praktikum (WBM)"><i class="fas fa-cube"></i>SolidWorks</div>
+            <div class="tech-item" data-tooltip="Selbststudium (3D-Druck)"><i class="fas fa-pencil-ruler"></i>Autodesk Inventor</div>
+            <div class="tech-item" data-tooltip="Aman Engineering Group"><i class="fas fa-ruler-combined"></i>AutoCAD</div>
+        </div>
+    </div>
+
+    <div class="skill-category-wrapper">
+        <h3 class="skill-category-title">Simulation & Analyse</h3>
+        <div class="tech-grid">
+            <div class="tech-item" data-tooltip="Uni (Bachelorarbeit)"><i class="fas fa-running"></i>SCONE</div>
+            <div class="tech-item" data-tooltip="Uni (Bachelorarbeit)"><i class="fas fa-walking"></i>OpenSim</div>
+            <div class="tech-item" data-tooltip="Uni (Bachelorarbeit)"><i class="fas fa-chart-line"></i>MATLAB</div>
+            <div class="tech-item" data-tooltip="Uni & Siemens Healthineers"><i class="fas fa-project-diagram"></i>KNIME Analytics</div>
+        </div>
+    </div>
+
+    <div class="skill-category-wrapper">
+        <h3 class="skill-category-title">Programmierung</h3>
+        <div class="tech-grid">
+            <div class="tech-item" data-tooltip="Uni"><i class="fab fa-java"></i>Java</div>
+            <div class="tech-item" data-tooltip="Uni"><i class="fab fa-python"></i>Python</div>
+        </div>
+    </div>
+
+    <div class="skill-category-wrapper">
+        <h3 class="skill-category-title">ERP & Office</h3>
+        <div class="tech-grid">
+            <div class="tech-item" data-tooltip="Langjährige Erfahrung aus Beruf und Studium"><i class="fab fa-windows"></i>MS-Office</div>
+            <div class="tech-item" data-tooltip="Siemens Healthineers"><i class="fas fa-server"></i>SAP (ERP)</div>
+            <div class="tech-item" data-tooltip="Siemens Healthineers"><i class="fas fa-robot"></i>MS Power Automate</div>
+        </div>
+    </div>
+
+    <br>
+
+    <h3 style="text-align:center; color:#666; margin-bottom:30px; margin-top:50px;">Sprachen</h3>
+    <div class="skills-container">
+        <div class="skill-box">
+            <div class="skill-title"><span>Deutsch (Verhandlungssicher C1)</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title"><span>Englisch (Fließend B2)</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title"><span>Arabisch (Muttersprache C2)</span><span>100%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 100%"></div></div>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="hobbys">Interessen & Engagement</h2>
+    <div class="hobbies-grid">
+        
+        <div class="hobby-item">
+            <div class="hobby-icon"><i class="fas fa-music"></i></div>
+            <div class="hobby-text-box">
+                <span class="hobby-title-text">Musik</span>
+                <div class="hobby-desc">Gitarre, Keyboard<br>& Musikproduktion</div>
+            </div>
+        </div>
+
+        <div class="hobby-item">
+            <div class="hobby-icon"><i class="fas fa-cocktail"></i></div>
+            <div class="hobby-text-box">
+                <span class="hobby-title-text">Gastronomie</span>
+                <div class="hobby-desc">Barkeeper<br>(Nebenberuflich)</div>
+            </div>
+        </div>
+
+        <div class="hobby-item">
+            <div class="hobby-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="hobby-text-box">
+                <span class="hobby-title-text">Ehrenamt</span>
+                <div class="hobby-desc">Mathe-Nachhilfe<br>für Schulkinder</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact-section" id="kontakt">
+        <h2 style="color:#0a66c2; margin-top:0;">Kontakt</h2>
+        <div class="contact-info">
+            <div><i class="fas fa-envelope"></i> anas.salem93@gmail.com</div>
+            <div><i class="fas fa-phone"></i> +49 152 37323835</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 50 },
+                "color": { "value": "#0a66c2" }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 160, "color": "#0a66c2", "opacity": 0.2, "width": 1 },
+                "move": { "speed": 1 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }
+            }
+        });
+
+        function flipCard(card) {
+            card.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
