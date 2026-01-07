@@ -128,11 +128,11 @@
 
         /* --- ÜBER MICH --- */
         .about-section {
-            max-width: 800px;
+            max-width: 700px;
             margin: 40px auto 0 auto;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 30px;
+            padding-top: 20px;
         }
 
         .about-section h2 {
@@ -271,8 +271,24 @@
         .flip-card.active:hover {
             transform: none; 
         }
+        /* die Maßen von der Flip Card (offen) */
+        .flip-card.active { width: 100%; max-width: 800px; height: 400px; }
+        /* --- HIER SIND DEINE SPEZIAL-GRÖSSEN --- */
+        
+        /* Klein (z.B. für Aman) */
+        .flip-card.active.h-500 { 
+            height: 500px; 
+        }
 
-        .flip-card.active { width: 100%; max-width: 800px; height: 600px; }
+        /* Mittel (z.B. für Siemens) */
+        .flip-card.active.h-600 { 
+            height: 600px; 
+        }
+        
+        /* Riesig (falls du mal viel Text hast) */
+        .flip-card.active.h-700 { 
+            height: 700px; 
+        }
         
         .flip-card-inner { 
             position: relative; width: 100%; height: 100%; text-align: left; 
@@ -549,10 +565,10 @@
                         <div class="click-hint">Klicke für Details <i class="fas fa-arrow-right"></i></div>
                     </div>
                     <div class="flip-card-back">
-                        <div class="card-image-placeholder"><i class="fas fa-image"></i></div>
+                        <!-- <div class="card-image-placeholder"><i class="fas fa-image"></i></div> -->
                         <h2>Tätigkeiten</h2>
                         <ul>
-                            <li><strong>Ressourcenplanung:</strong> Koordination komplexer Wartungseinsätze für medizinische Großgeräte.</li>
+                            <li><strong>Planung & Koordination:</strong> Koordination von Wartungseinsätzen und gesetzlichen Prüfungen (z. B. STK, Konstanzprüfungen, CTDI) für medizinische Bildgebungsgeräte (CT, MRT, Angiographie).</li>
                             <li><strong>SAP & ERP:</strong> Digitalisierung von Wartungs- und Prüfprotokollen sowie Dokumentationspflege.</li>
                             <li><strong>Schnittstellenmanagement:</strong> Bindeglied zwischen Kunden, Technikern und externen Dienstleistern.</li>
                             <li><strong>Prozessoptimierung:</strong> Automatisierung von Workflows mittels MS Power Automate und Datenanalyse mit KNIME.</li>
